@@ -27,7 +27,7 @@ def multi_process_capture(camera_capture : cv2.VideoCapture, camera_fps : Fps) -
 
 			while camera_capture and camera_capture.isOpened():
 				_, capture_vision_frame = camera_capture.read()
-				if analyse_stream(capture_vision_frame, camera_fps):
+				if not state_manager.get_item('disable_content_filter') and analyse_stream(capture_vision_frame, camera_fps):
 					camera_capture.release()
 
 				if is_vision_frame(capture_vision_frame):

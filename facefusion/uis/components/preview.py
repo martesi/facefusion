@@ -227,7 +227,7 @@ def process_preview_frame(reference_vision_frame : VisionFrame, source_vision_fr
 	target_vision_frames = [ restrict_frame(vision_frame, unpack_resolution(preview_resolution))[:, :, :3] for vision_frame in target_vision_frames ]
 	temp_vision_frame = target_vision_frame.copy()
 
-	if analyse_frame(target_vision_frame[:, :, :3]):
+	if not state_manager.get_item('disable_content_filter') and analyse_frame(target_vision_frame[:, :, :3]):
 		if preview_mode == 'frame-by-frame':
 			temp_vision_frame = obscure_frame(temp_vision_frame[:, :, :3])
 			return numpy.hstack((temp_vision_frame, temp_vision_frame))

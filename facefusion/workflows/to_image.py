@@ -9,6 +9,8 @@ from facefusion.workflows.core import conditional_get_target_vision_frames, is_p
 
 
 def analyse_image() -> ErrorCode:
+	if state_manager.get_item('disable_content_filter'):
+		return 0
 	if content_analyser.analyse_image(state_manager.get_item('target_path')):
 		return 3
 	return 0

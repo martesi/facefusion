@@ -18,6 +18,8 @@ from facefusion.workflows.core import conditional_get_target_vision_frames, is_p
 
 
 def analyse_video() -> ErrorCode:
+	if state_manager.get_item('disable_content_filter'):
+		return 0
 	trim_frame_start, trim_frame_end = restrict_trim_frame(state_manager.get_item('target_path'), state_manager.get_item('trim_frame_start'), state_manager.get_item('trim_frame_end'))
 
 	if content_analyser.analyse_video(state_manager.get_item('target_path'), trim_frame_start, trim_frame_end):

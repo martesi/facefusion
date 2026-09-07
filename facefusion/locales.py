@@ -163,6 +163,7 @@ LOCALES : Locales =\
 			'video_memory_strategy': 'balance fast processing and low VRAM usage',
 			'log_level': 'adjust the message severity displayed in the terminal',
 			'halt_on_error': 'halt the program once an error occurred',
+			'disable_content_filter': 'disable the nsfw content filter while processing',
 			'run': 'run the program',
 			'headless_run': 'run the program in headless mode',
 			'batch_run': 'run the program in batch mode',
